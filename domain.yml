@@ -1,0 +1,118 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- inform_resolution_code
+- inform_affirm
+- goodbye
+- inform_resolve_incident_query
+- greet
+- inform_deny
+- inform_jira_number
+- inform_incident_number
+- inform_field_name
+- inform_update_jira_query
+- inform_create_change_request_query
+- inform_thanks
+entities:
+- field_name
+- incident_number
+- jira_number
+- resolution_code
+slots:
+  field_name:
+    type: unfeaturized
+  incident_number:
+    type: unfeaturized
+  jira_number:
+    type: unfeaturized
+  output:
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized
+  resolution_code:
+    type: unfeaturized
+  resolution_desc:
+    type: unfeaturized
+responses:
+  utter_action_successful:
+  - text: '{output}'
+  utter_ask_if_any_help_required:
+  - text: Do you want any other help?
+  utter_ask_inc_confirmation:
+  - text: "Please confirm the details \n -Incident number : {incident_number}\n -Resolution\
+      \ Code : {resolution_code}\n -Resolution Description : {resolution_desc}\n -press\n\
+      \ \"Yes\" to proceed else \"No\" to change the details"
+  utter_ask_incident_number:
+  - text: Please provide Incident Number
+  utter_ask_jira_confirmation:
+  - text: "Please confirm the details \n -Incident number : {incident_number}\n -Jira\
+      \ number : {jira_number}  \n \n \"Yes\" to proceed else \"No\" to change the\
+      \ details"
+  utter_ask_jira_number:
+  - text: Please provide Jira Number.
+  utter_ask_resolution_code:
+  - buttons:
+    - payload: /inform_resolution_code{"resolution_code":"RC1"}
+      title: RC1
+    - payload: /inform_resolution_code{"resolution_code":"RC2"}
+      title: RC2
+    - payload: /inform_resolution_code{"resolution_code":"RC3"}
+      title: RC3
+    - payload: /inform_resolution_code{"resolution_code":"RC4"}
+      title: RC4
+    - payload: /inform_resolution_code{"resolution_code":"RC5"}
+      title: RC5
+    - payload: /inform_resolution_code{"resolution_code":"RC6"}
+      title: RC6
+    text: Please provide Resolution Code
+  utter_ask_resolution_desc:
+  - text: Please provide Resolution Description
+  utter_ask_what_you_want_to_change_inc:
+  - buttons:
+    - payload: /inform_field_name{"field_name":"incident_number"}
+      title: Incident Number
+    - payload: /inform_field_name{"field_name":"resolution_code"}
+      title: Resolution Code
+    - payload: /inform_field_name{"field_name":"resolution_desc"}
+      title: Resolution Description
+    text: Which field you want to change?
+  utter_ask_what_you_want_to_change_jira:
+  - buttons:
+    - payload: /inform_field_name{"field_name":"incident_number"}
+      title: Incident Number
+    - payload: /inform_field_name{"field_name":"jira_number"}
+      title: Jira Number
+    text: Which field you want to change?
+  utter_goodbye:
+  - text: Bye. Have a good day ahead!
+  utter_greet:
+  - buttons:
+    - payload: /inform_resolve_incident_query
+      title: Resolve Incident
+    - payload: /inform_update_jira_query
+      title: Update Jira to INC.
+    - payload: /inform_create_change_request_query
+      title: Create Change Request
+    text: Hey! I am bot , How can I help you?
+actions:
+- action_jira_api
+- action_reset_all_slots
+- action_reset_slot
+- action_set_resolution_desc
+- action_ticket_api
+- utter_action_successful
+- utter_ask_if_any_help_required
+- utter_ask_inc_confirmation
+- utter_ask_incident_number
+- utter_ask_jira_confirmation
+- utter_ask_jira_number
+- utter_ask_resolution_code
+- utter_ask_resolution_desc
+- utter_ask_what_you_want_to_change_inc
+- utter_ask_what_you_want_to_change_jira
+- utter_goodbye
+- utter_greet
+forms:
+- jira_info_form
+- ticket_info_form
