@@ -1,7 +1,7 @@
 import requests
 
-user = 'admin'
-pwd = 'Admin@7788'
+user = '#'
+pwd = '#'
 
 
 def get_sys_id_from_INC(url):
