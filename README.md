@@ -1,3 +1,3 @@
 # Rasa-Chatbot-Project-Customer-Service
 
-This is simple ChatBot project using open source Rasa. 
+This is ChatBot project using open source Rasa.
